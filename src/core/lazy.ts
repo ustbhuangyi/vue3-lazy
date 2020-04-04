@@ -1,9 +1,8 @@
-import { DirectiveBinding, VNode } from 'vue'
+import { DirectiveBinding } from 'vue'
 import { LazyOptions, State, Target } from '../types'
 import { hasIntersectionObserver, scrollParent } from '../helpers/dom'
 import ImageManager from './imageManager'
 import { throttle } from '../helpers/util'
-import { nextTick } from 'vue'
 
 const DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7'
 
@@ -26,7 +25,7 @@ export default class Lazy {
 
     this.cache = new Set()
     this.managerQueue = []
-    this.throttleLazyHandler = throttle(this.lazyHandler, THROTTLE_DELAY)
+    this.throttleLazyHandler = throttle(this.lazyHandler.bind(this), THROTTLE_DELAY)
 
     this.init()
   }
