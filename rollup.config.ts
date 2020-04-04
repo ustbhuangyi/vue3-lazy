@@ -9,11 +9,29 @@ const pkg = require('./package.json')
 
 const libraryName = 'vue-lazy'
 
+const banner =
+  '/*!\n' +
+  ` * vue3-lazy v${pkg.version}\n` +
+  ` * (c) 2020-${new Date().getFullYear()} ustbhuangyi\n` +
+  ' * Released under the MIT License.\n' +
+  ' */'
+
 export default {
   input: `src/index.ts`,
   output: [
-    { file: pkg.main, name: camelCase(libraryName), format: 'umd', sourcemap: true },
-    { file: pkg.module, format: 'es', sourcemap: true },
+    {
+      file: pkg.main,
+      name: camelCase(libraryName),
+      format: 'umd',
+      sourcemap: true,
+      banner
+    },
+    {
+      file: pkg.module,
+      format: 'es',
+      sourcemap: true,
+      banner
+    },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   external: [],
@@ -24,7 +42,7 @@ export default {
     // Allow json resolution
     json(),
     // Compile TypeScript files
-    typescript({ useTsconfigDeclarationDir: true }),
+    typescript({useTsconfigDeclarationDir: true}),
     // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
     commonjs(),
     // Allow node_modules resolution, so you can use 'external' to control
