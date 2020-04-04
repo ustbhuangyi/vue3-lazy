@@ -1,11 +1,11 @@
 {
   "name": "vue3-lazy",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.0",
   "description": "",
   "keywords": [],
   "main": "dist/vue-lazy.umd.js",
   "module": "dist/vue-lazy.es5.js",
-  "typings": "dist/types/vue-lazy.d.ts",
+  "typings": "dist/types/index.d.ts",
   "files": [
     "dist",
     "src"
@@ -24,7 +24,8 @@
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
     "start": "rollup -c rollup.config.ts -w",
     "commit": "git-cz",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "pub": "sh release.sh"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
