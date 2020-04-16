@@ -6,7 +6,7 @@ import loading from './default.png'
 import './reset.styl'
 
 const app = createApp(App)
-lazyPlugin.install(app, {
+app.use(lazyPlugin, {
   loading
 })
 app.mount('#app')

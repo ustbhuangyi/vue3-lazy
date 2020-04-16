@@ -22,7 +22,7 @@ import App from './app'
 import lazyPlugin from 'vue3-lazy'
 
 const app = createApp(App)
-lazyPlugin.install(app, {
+app.use(lazyPlugin, {
   loading: 'loading.png',
   error: 'error.png'
 })
