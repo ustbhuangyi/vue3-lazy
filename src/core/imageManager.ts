@@ -45,6 +45,7 @@ export default class ImageManager {
     if (src !== currentSrc) {
       this.src = src
       this.state = State.loading
+      this.load()
     }
   }
 
